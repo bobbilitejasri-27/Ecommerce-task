@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Cart</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<h1>Your Cart 🛍️</h1>
+
+<div id="cartItems"></div>
+
+<script>
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+let total = 0;
+let html = "";
+
+cart.forEach(item => {
+    html += `<p>${item.name} - ₹${item.price}</p>`;
+    total += item.price;
+});
+
+html += `<h3>Total: ₹${total}</h3>`;
+
+document.getElementById("cartItems").innerHTML = html;
+</script>
+
+<a href="../index.html">← Back to Shop</a>
+
+</body>
+</html>
